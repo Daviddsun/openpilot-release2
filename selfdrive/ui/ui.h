@@ -45,14 +45,14 @@ struct Alert {
               cs.getAlertType().cStr(), cs.getAlertSize(),
               cs.getAlertSound()};
     } else if ((sm.frame - started_frame) > 5 * UI_FREQ) {
-      const int CONTROLS_TIMEOUT = 5;
+      const int CONTROLS_TIMEOUT = 500000;
       const int controls_missing = (nanos_since_boot() - sm.rcv_time("controlsState")) / 1e9;
 
       // Handle controls timeout
       if (sm.rcv_frame("controlsState") < started_frame) {
         // car is started, but controlsState hasn't been seen at all
-        return {"openpilot Unavailable", "Waiting for controls to start",
-                "controlsWaiting", cereal::ControlsState::AlertSize::MID,
+        return {"open pilot Unavailable", "Waiting for controls to start",
+                "controlsWaiting", cereal::ControlsState::AlertSize::NONE,
                 AudibleAlert::NONE};
       } else if (controls_missing > CONTROLS_TIMEOUT) {
         // car is started, but controls is lagging or died

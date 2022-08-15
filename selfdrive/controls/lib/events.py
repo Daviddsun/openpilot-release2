@@ -137,8 +137,8 @@ class Alert:
 
 class NoEntryAlert(Alert):
   def __init__(self, alert_text_2: str, visual_alert: car.CarControl.HUDControl.VisualAlert=VisualAlert.none):
-    super().__init__("openpilot Unavailable", alert_text_2, AlertStatus.normal,
-                     AlertSize.mid, Priority.LOW, visual_alert,
+    super().__init__("open pilot Unavailable", alert_text_2, AlertStatus.normal,
+                     AlertSize.none, Priority.LOWEST, visual_alert,
                      AudibleAlert.refuse, 3.)
 
 
